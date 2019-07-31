@@ -3,6 +3,9 @@ package com.visa.prj.entity;
 public class Mobile extends Product {
 	public String connectivity;
 	
+	public Mobile() {
+	}
+
 	public Mobile(int id, String name, double price, String connectivity) {
 		super(id, name, price);
 		this.connectivity = connectivity;

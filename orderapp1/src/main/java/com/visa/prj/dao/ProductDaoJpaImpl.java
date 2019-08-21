@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.TypedQuery;
 
 import org.springframework.stereotype.Repository;
 
@@ -16,8 +17,11 @@ public class ProductDaoJpaImpl implements ProductDao {
 	private EntityManager em;
 	@Override
 	public List<Product> getProducts() {
-		
-		return null;
+		String jpql = "from Product"; //Product is class not table (Case Sensitive) no need for select keyword if you require full row
+		//Select p from Product p
+		TypedQuery<Product> query = em.createQuery(jpql,Product.class);
+		return query.getResultList();
+		//return null;
 	}
 
 	@Override

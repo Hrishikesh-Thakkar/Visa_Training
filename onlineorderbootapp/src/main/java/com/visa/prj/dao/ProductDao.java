@@ -1,0 +1,19 @@
+package com.visa.prj.dao;
+
+import java.util.List;
+
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
+
+import com.visa.prj.entity.Product;
+
+public interface ProductDao extends JpaRepository<Product, Integer> {
+//find findbyid save remove already set in spring boot
+	//can't find by category default, Function name must be specified in this format
+	//All functions must start with findby and one can use "AND" "OR"
+	List<Product> findByCategory(String category);
+	
+	@Query("from Product where price >= :pr")
+	List<Product> getByPriceGreaterThan(@Param("pr")double price);
+}
